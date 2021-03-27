@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import './Cats.css';
 
 class Pets extends Component {
-
     render() {
         if (this.props.pets) {
             let maleCats = this.props.pets.Male.map((cat, idx) => <p key={idx}>{cat}</p>);

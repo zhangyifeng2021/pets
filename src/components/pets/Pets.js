@@ -6,10 +6,9 @@ import owners from '../../mocks/owner.json';
 class Pets extends Component {
     constructor(props) {
         super(props);
-        this.cats = this.getCats(owners);
-        console.log(this.cats);
+        this.cats = this.getPets(owners);
     }
-    getCats(owners) {
+    getPets(owners) {
         let pets = { 'Male': [], 'Female': [] };
         if (owners) {
             owners.forEach(owner => {
@@ -21,10 +20,9 @@ class Pets extends Component {
         return pets;
     }
     render() {
-        return (<div className="pets-container">
-            <Cats pets={this.cats}/>
+        return (<div className="container">
+            <Cats pets={this.cats} />
         </div>);
-
     }
 }
 export default Pets;
