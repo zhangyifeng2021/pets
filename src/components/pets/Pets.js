@@ -4,8 +4,6 @@ import Cats from '../cats/Cats';
 import './Pets.css';
 import * as constants from '../constants';
 
-// const owners = require('../../mocks/owner.json');
-
 class Pets extends Component {
     constructor(props) {
         super(props);
@@ -37,11 +35,10 @@ class Pets extends Component {
         if (owners) {
             owners.forEach(owner => {
                 if (owner.pets) {
-                    pets[owner.gender] = pets[owner.gender].concat(owner.pets.filter(pet => pet.type === type).map(pet => pet.name));
+                    pets[owner.gender] = pets[owner.gender].concat(owner.pets.filter(pet => pet.type === type).map(pet => pet.name)).sort();
                 }
             });
         }
-        // console.log(pets);
         return pets;
     }
     render() {
