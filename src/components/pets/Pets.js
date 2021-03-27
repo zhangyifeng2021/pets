@@ -1,13 +1,36 @@
 import React, { Component } from 'react';
-import './Pets.css';
+import axios from 'axios';
 import Cats from '../cats/Cats';
+import './Pets.css';
 import * as constants from '../constants';
-import owners from '../../mocks/owner.json';
+
+// const owners = require('../../mocks/owner.json');
 
 class Pets extends Component {
     constructor(props) {
         super(props);
-        this.cats = this.getPets(owners, constants.types.CAT);
+        this.state = {
+            pets: [],
+            isLoaded: false
+        }
+    }
+    componentDidMount() {
+        this.fetchData();
+    }
+    fetchData() {
+        axios.get(this.props.link).then(response => {
+            console.log(response);
+            this.setState({
+                pets: this.getPets(response.data, constants.types.CAT),
+                isLoaded: true
+            });
+        }).catch(error => {
+            console.log(error);
+            this.setState({
+                isLoaded: false,
+                error: error
+            })
+        });
     }
     getPets(owners, type) {
         let pets = { [constants.genders.MALE]: [], [constants.genders.FEMALE]: [] };
@@ -18,13 +41,17 @@ class Pets extends Component {
                 }
             });
         }
-        console.log(pets);
+        // console.log(pets);
         return pets;
     }
     render() {
-        return (<div className="container">
-            <Cats pets={this.cats} />
-        </div>);
+        if (!this.state.isLoaded) {
+            return <div>Loading</div>
+        } else {
+            return (<div className="container">
+                <Cats pets={this.state.pets} />
+            </div>);
+        }
     }
 }
 export default Pets;

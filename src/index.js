@@ -8,7 +8,7 @@ import Pets from './components/pets/Pets';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Pets />
+    <Pets link="http://5c92dbfae7b1a00014078e61.mockapi.io/owners" />
   </React.StrictMode>,
   document.getElementById('root')
 );
