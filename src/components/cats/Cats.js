@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as constants from '../constants';
 
 class Pets extends Component {
     render() {
@@ -8,13 +9,13 @@ class Pets extends Component {
             return (
                 <div className="pets-container">
                     <div className="row">
-                        <div className="col-md-4 owner-gender">Male</div>
+                        <div className="col-md-4 owner-gender">{constants.genders.MALE}</div>
                         <div className="col-md-8">&nbsp;</div>
                         <div className="col-md-4">&nbsp;</div>
                         <div className="col-md-8 pet-name">{maleCats}</div>
                     </div>
                     <div className="row">
-                        <div className="col-md-4 owner-gender">Female</div>
+                        <div className="col-md-4 owner-gender">{constants.genders.FEMALE}</div>
                         <div className="col-md-8">&nbsp;</div>
                         <div className="col-md-4">&nbsp;</div>
                         <div className="col-md-8 pet-name">{femaleCats}</div>
