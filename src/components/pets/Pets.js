@@ -6,8 +6,8 @@ import owners from '../../mocks/owner.json';
 class Pets extends Component {
     constructor(props) {
         super(props);
-        const cats = this.getCats(owners);
-        console.log(cats);
+        this.cats = this.getCats(owners);
+        console.log(this.cats);
     }
     getCats(owners) {
         let pets = { 'Male': [], 'Female': [] };
@@ -18,12 +18,11 @@ class Pets extends Component {
                 }
             });
         }
-        console.log(pets);
         return pets;
     }
     render() {
         return (<div className="pets-container">
-            Pets<Cats />
+            <Cats pets={this.cats}/>
         </div>);
 
     }
